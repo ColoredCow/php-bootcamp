@@ -141,7 +141,13 @@
             </button>
         </div>
         <div class="modal-body">
-            <form>
+            <div class="alert alert-success d-none" id="successResponse">
+                Registration successful!
+            </div>
+            <div class="alert alert-danger d-none" id="errorResponse">
+                OOPS! Something went wrong. Please try again later.
+            </div>
+            <form id="registrationForm">
                 <div class="form-row align-items-center">
                     <div class="col">
                         <label class="sr-only" for="inlineFormInputGroup">Name</label>
@@ -205,10 +211,12 @@
                     phone: document.getElementById('phone').value
                 })
                 .then(function (response) {
-                    console.log(response);
+                    document.getElementById('registrationForm').classList.add('d-none');
+                    document.getElementById('successResponse').classList.remove('d-none');
                 })
                 .catch(function (error) {
-                    console.log(error);
+                    document.getElementById('registrationForm').classList.add('d-none');
+                    document.getElementById('errorResponse').classList.remove('d-none');
                 });
             }
         }

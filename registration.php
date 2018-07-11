@@ -14,16 +14,16 @@ $database = 'bootcamp_demo';
 
 $conn = mysqli_connect($host, $user, $password, $database);
 if (mysqli_connect_errno()) {
-    die('failed DB connection');
+    echo 'error';die();
 }
 
 // store $_POST values in database
 $query = "INSERT INTO registrations (name, phone) VALUES ('$name', '$phone')";
 
 if ($conn->query($query) === TRUE) {
-    echo "New record created successfully";
+    echo 'success';
 } else {
-    echo "Error: " . $query . "<br>" . $conn->error;
+    echo 'error';
 }
 
 
