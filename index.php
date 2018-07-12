@@ -31,7 +31,7 @@ if (isset($_POST['nameInput']) && isset($_POST['phoneInput'])) {
 	<div id="app">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="navbar-soiree">
 			<div class="container-fluid">
-				<a class="navbar-brand mb-0 h1" href="#">Soir&eacute;e</a>
+				<a class="navbar-brand mb-0 h1" href="/">Soir&eacute;e</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
@@ -46,6 +46,9 @@ if (isset($_POST['nameInput']) && isset($_POST['phoneInput'])) {
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#gallery">Gallery</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="registrations.php">Registrations</a>
 						</li>
 					</ul>
 					<form class="form-inline my-2 my-lg-0">
