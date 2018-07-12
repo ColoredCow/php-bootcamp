@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <!-- development version, includes helpful console warnings -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+      <title>Soirée</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <a class="navbar-brand" href="home_vuejs.html">Soirée</a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+              <li class="nav-item ">
+                <a class="nav-link" href="#upcoming">Upcoming</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="#past-events">Past</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="#gallery">Gallery</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="registration.php">Registered</a>
+              </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+          </form>
+      </div>
+    </nav><br>
+    <div id="upcoming" class="container">
+      <div class="jumbotron">
+        <span class="badge badge-secondary">Upcoming Event</span>
+        <h1 class="display-4">Retro Night</h1>
+        <p class="lead">Hey dudes and dudettes, we're gonna have a retro night with wine, cheese and a huge selection of the Beatles, Bob Dylan and Dire Straits. Be sure to register and dress up like you travelled to the 80's</p>
+        <hr class="my-4">
+        <p><i class="fas fa-calendar-alt"></i>  2nd August, 2018</p>
+        <p><i class="fas fa-map-marker-alt"></i>  ColoredCow, Gurgaon</p>
+        <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#exampleModal"><i class="fas fa-concierge-bell"></i>  I want to attend</button>
+        <button type="button" class="btn btn-secondary"><i class="fas fa-share"></i>  Share it with a Friend!</button>
+      </div>
+    </div>
+    <div id="past-events" class="container" >
+        <h1>Past Events</h1>
+        <div id="app-4" class="row" id="past-events-container">
+            <div v-for="past in events"  class="col-4">
+                <div class="card">
+                <img class="card-img-top" v-bind:src="past.img" alt="Card image cap">
+                    <div class="card-body">
+                    <p class="card-title"><i class="fas fa-calendar-alt"></i>{{ past.date}}</p>
+                    <p class="card-text"><i class="fas fa-map-marker-alt"></i>{{ past.location}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><br>       
+    <div id="gallery" class="container" >
+        <h1>Gallery</h1> 
+        <div id="slide" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner" id="show">
+               <div  v-for="(todo, index) in todos" class="carousel-item " v-bind:class="{ active: index==0 }">
+               <img class="card-img-top" v-bind:src="todo.photo" alt="Card image cap" width="1100" height="400">
+            </div>
+          </div>
+          <!-- Left and right controls -->
+          <a class="carousel-control-prev" href="#slide" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </a>
+          <a class="carousel-control-next" href="#slide" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </a>
+        </div>
+    </div><br>
+    <div class="m-0 p-1 container-fluid text-center badge-light">
+      <p><h6><i class="fas fa-award text-warning"></i> Day 1 at <a href="#">FrontEnd Bootcamp, Codetrek</a></h6></p>
+    </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-concierge-bell"></i>  I want to attend</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="gowipe">
+        <form action="#" id="form_id">
+          <div class="form-group ">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name">
+          </div>
+          <div class="form-group">
+            <label for="contact">Phone:</label>
+            <input type="number" class="form-control" id="phone">
+          </div>
+          <div class="form-group">
+            <label for="email">Email address:</label>
+            <input type="email" class="form-control" id="email">
+          </div>
+        </form>
+      </div>
+      <div id= "submit" class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button v-on:click="greet" type="submit" class="btn btn-primary text-center">Invite Me!</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  
+var app4 = new Vue({
+  el: '#app-4',
+  data: {
+    events: [
+                    { 
+                        img : 'https://scontent.fdel1-4.fna.fbcdn.net/v/t31.0-8/17212267_1801527916731127_3340760783375836061_o.jpg?_nc_cat=0&oh=6af21c849b4011a1e3a836b5442a7c61&oe=5BAC5EEF',
+                        date : '22nd March, 2018',
+                        location : 'Gurgaon'
+                    },
+                    {
+                        img : 'https://scontent.fdel1-4.fna.fbcdn.net/v/t31.0-8/17191904_1801447853405800_8076038643443945856_o.jpg?_nc_cat=0&oh=421fbbbea3b158dae78dc7954859486c&oe=5BA17FE8',
+                        date : '13th December, 2017',
+                        location : 'Tehri'
+                    },
+                    {
+                        img : 'https://scontent.fdel1-4.fna.fbcdn.net/v/t31.0-8/17192458_1801477070069545_6640481842488629040_o.jpg?_nc_cat=0&oh=4f4dffa15d21492d147f752bcbbee3cd&oe=5BE73407',
+                        date : '5th September, 2017',
+                        location : 'Gurgaon'
+                    }
+                    ]
+  }
+})
+var slide = new Vue({
+  el: '#show',
+  data: {
+    todos: [
+      { photo: 'dance.jpg' },
+      { photo: 'drnk.jpg' },
+      { photo: 'songs.jpg' }
+    ],
+
+  }
+})
+
+var formsubmission = new Vue({
+  el: '#submit',
+  methods: {
+    greet: function (event) {
+    var name = document.getElementById("name").value;
+    var phone = document.getElementById("phone").value;
+    var email = document.getElementById("email").value;
+    axios.post('add_attendee.php', {
+         name: name,
+         phone: phone,
+         email: email
+    })
+       .then(function (response){
+          html = ""
+          html+='<div class="alert alert-success" role="alert">';
+          html+='<h3>You have been registered! </h3>';
+          html+='</div>';
+          document.getElementById("gowipe").innerHTML=html;
+         })
+        .catch(function (error) {  
+        {  
+          html = ""
+          html+='<div class="alert alert-danger" role="alert">';
+          html+='<h3>Something went wrong!Try again</h3>';
+          html+='</div>';
+          document.getElementById("gowipe").innerHTML=html;
+        }
+        });
+    
+    }
+    
+  }
+})
+</script>
+  </body>
+</html>
