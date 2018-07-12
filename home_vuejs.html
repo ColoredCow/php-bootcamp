@@ -15,7 +15,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-      <a class="navbar-brand" href="#">Soirée</a>
+      <a class="navbar-brand" href="home_vuejs.html">Soirée</a>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
               <li class="nav-item ">
@@ -26,6 +26,9 @@
               </li>
               <li class="nav-item ">
                 <a class="nav-link" href="#gallery">Gallery</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="registration.php">Registered</a>
               </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
@@ -80,8 +83,6 @@
     <div class="m-0 p-1 container-fluid text-center badge-light">
       <p><h6><i class="fas fa-award text-warning"></i> Day 1 at <a href="#">FrontEnd Bootcamp, Codetrek</a></h6></p>
     </div>
-
-
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -92,30 +93,25 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-
-
-<form action="#" id="form_id">
-  <div class="form-group ">
-    <label for="name">Name:</label>
-    <input type="text" class="form-control" id="name">
-  </div>
-  <div class="form-group">
-    <label for="contact">Phone:</label>
-    <input type="number" class="form-control" id="phone">
-  </div>
-  <div class="form-group">
-    <label for="email">Email address:</label>
-    <input type="email" class="form-control" id="email">
-  </div>
-
-
+      <div class="modal-body" id="gowipe">
+        <form action="#" id="form_id">
+          <div class="form-group ">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name">
+          </div>
+          <div class="form-group">
+            <label for="contact">Phone:</label>
+            <input type="number" class="form-control" id="phone">
+          </div>
+          <div class="form-group">
+            <label for="email">Email address:</label>
+            <input type="email" class="form-control" id="email">
+          </div>
+        </form>
       </div>
       <div id= "submit" class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button v-on:click="greet" type="submit" class="btn btn-primary text-center">Invite Me!</button>
-</form>
-
       </div>
     </div>
   </div>
@@ -163,14 +159,28 @@ var formsubmission = new Vue({
     var name = document.getElementById("name").value;
     var phone = document.getElementById("phone").value;
     var email = document.getElementById("email").value;
-axios.post('add_attendee.php', {
+    axios.post('add_attendee.php', {
          name: name,
          phone: phone,
          email: email
-       })
-       .then(function (response) {
-         alert(response.data);
-       })
+    })
+       .then(function (response){
+          html = ""
+          html+='<div class="alert alert-success" role="alert">';
+          html+='<h3>You have been registered! </h3>';
+          html+='</div>';
+          document.getElementById("gowipe").innerHTML=html;
+         })
+        .catch(function (error) {  
+        {  
+          html = ""
+          html+='<div class="alert alert-danger" role="alert">';
+          html+='<h3>Something went wrong!Try again</h3>';
+          html+='</div>';
+          document.getElementById("gowipe").innerHTML=html;
+        }
+        });
+    
     }
     
   }

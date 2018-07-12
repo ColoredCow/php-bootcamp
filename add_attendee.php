@@ -20,7 +20,7 @@ $data = json_decode(file_get_contents("php://input"));
 $sql = "INSERT INTO attendee(name, phone, email) VALUES ('$username','$phone','$email')";
 
 if ($conn->query($sql) === TRUE) {
-    echo "Thankyou for registration";
+    echo "success";
 } else {
     echo "Error";
 }
