@@ -81,9 +81,9 @@
                       <button type="button" class="Close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                       </button>
-                  
+                  </div>
                     <div class="modal-body">
-                        </div>
+                        
                     <div v-show="registrationsuccess == true" >
                       You have been succesfully registered!
                     </div>
