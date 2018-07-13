@@ -254,7 +254,7 @@
 
           rsvp () {
             axios
-              .post('server.php', {
+              .post('registrations.php', {
                   
                   name: this.name,
                   phone: this.phone,
