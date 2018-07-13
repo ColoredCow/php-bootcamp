@@ -84,11 +84,11 @@
                   </div>
                     <div class="modal-body">
                         
-                    <div v-show="registrationsuccess == true" >
+                    <div class="alert alert-success" role="alert" v-show="registrationsuccess == true" >
                       You have been succesfully registered!
                     </div>
-                    <div v-show="registrationerror == true" >
-                      We'll miss you..!
+                    <div class="alert alert-danger" role="alert" v-show="registrationerror == true" >
+                      Registration failed!
                     </div>
                       <form class="form-inline"  id="form" v-show="formsubmitted == false">
                         <label class="sr-only" for="inlineFormInputName2">Name</label>
