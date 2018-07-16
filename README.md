@@ -1,5 +1,7 @@
 # PHP Bootcamp
 
+This if the official repository for [CodeTrek PHP Bootcamp](https://coloredcow.com/codetrek-session/php-bootcamp/) being conducted at ColoredCow Gurgaon and Tehri.
+
 ## Participants
 
 ### 2017
